@@ -11,7 +11,7 @@ class CircBuf(object):
         self.ptr = (self.ptr + 1) % self.n
     
     def get_tuple(self):
-        return tuple(self.buf[self.ptr:] + self.buf[:self.ptr])
+        return tuple(self.buf[(self.ptr + i) % self.n] for i in range(self.n))
 
 def sliding_window(items, n):
     if n < 1:
